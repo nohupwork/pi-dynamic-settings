@@ -1,0 +1,43 @@
+{
+  "$schema": "Dynamic settings — per-mode sampling parameters",
+  "$note": "Edit this file to tune per-mode generation params. Changes apply immediately on next message.",
+  "$note2": "Standard OpenAI params work on all backends. Extra fields are passed through for llama.cpp/Ollama compat.",
+  "modes": {
+    "creative": {
+      "temperature": 1.1,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 0.1,
+      "frequency_penalty": 0.05,
+      "repetition_penalty": 1.0
+    },
+    "focused": {
+      "temperature": 0.3,
+      "top_p": 0.90,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 0.5,
+      "frequency_penalty": 0.05,
+      "repetition_penalty": 1.1
+    },
+    "balanced": {
+      "temperature": 0.7,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "frequency_penalty": 0.0,
+      "repetition_penalty": 1.0
+    },
+    "precise": {
+      "temperature": 0.6,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "frequency_penalty": 0.02,
+      "repetition_penalty": 1.0
+    }
+  }
+}
