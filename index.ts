@@ -175,7 +175,7 @@ export default function dynamicSettingsExtension(pi: ExtensionAPI) {
       return undefined;
     }
 
-    return { ...event.payload, ...overrides };
+    return { ...(event.payload as Record<string, unknown>), ...overrides };
   });
 
   // Initialize status on session start
