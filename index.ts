@@ -119,13 +119,21 @@ export default function dynamicSettingsExtension(pi: ExtensionAPI) {
   }
 
   async function showSelector(ctx: ExtensionContext): Promise<void> {
-    const items = MODE_NAMES.map((name) => {
-      const params = getParamsForMode(name);
-      return `${name} (temp=${params.temperature}, top_p=${params.top_p})`;
-    });
+    const items = [
+      ...MODE_NAMES.map((name) => {
+        const params = getParamsForMode(name);
+        return `${name} (temp=${params.temperature}, top_p=${params.top_p})`;
+      }),
+      "off — restore provider defaults",
+    ];
 
     const choice = await ctx.ui.select("Select settings mode", items);
     if (!choice) return;
+
+    if (choice.startsWith("off")) {
+      await disableMode(ctx);
+      return;
+    }
 
     const name = choice.split(" (")[0];
     await enableMode(ctx, name);
